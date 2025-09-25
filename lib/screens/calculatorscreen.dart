@@ -13,19 +13,69 @@ class CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Column(
-
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Row(
             children: [
-              Button(Label: '+'),
-              Button(Label: '-'),
-              Button(Label: '+'),
-              Button(Label: '-'),
+              Button(Label: '+', Press: (){}),
+              Button(Label: '-', Press: (){}),
+              Button(Label: '+', Press: (){}),
+              Button(Label: '-', Colour: Colors.orange, Press: (){}),
+            ],
+          ),
+          Column(
+            children: [
+              Row(
+                children: [
+                  Button(Label: '+', Press: (){}),
+                  Button(Label: '-', Press: (){}),
+                  Button(Label: '+', Press: (){}),
+                  Button(Label: '-', Colour: Colors.orange, Press: (){}),
+                ],
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Row(
+                children: [
+                  Button(Label: '+', Press: (){}),
+                  Button(Label: '-', Press: (){}),
+                  Button(Label: '+', Press: (){}),
+                  Button(Label: '-', Colour: Colors.orange, Press: (){}),
+                ],
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Row(
+                children: [
+                  Button(Label: '+', Press: (){}),
+                  Button(Label: '-', Press: (){}),
+                  Button(Label: '+', Press: (){}),
+                  Button(Label: '-', Colour: Colors.orange, Press: (){}),
+                ],
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Row(
+                children: [
+                  Button(Label: '+', Press: (){}),
+                  Button(Label: '-', Press: (){}),
+                  Button(Label: '+', Press: (){}),
+                  Button(Label: '-', Colour: Colors.orange, Press: (){}),
+                ],
+              ),
             ],
           ),
         ],
-      )
+      ),
     );
   }
 }
