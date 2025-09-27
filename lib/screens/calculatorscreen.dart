@@ -36,11 +36,21 @@ class CalculatorScreenState extends State<CalculatorScreen> {
                 Row(
                   children: [
                     Button(Label: 'AC', Press: (){
-
+                      userInput = '';
+                      setState(() {
+                      });
                     }),
-                    Button(Label: 'x', Press: (){}),
+                    Button(Label: 'x', Press: (){
+                      userInput = userInput.substring(0, userInput.length-1);
+                      setState(() {
+                      });
+                    }),
                     Button(Label: '+/-', Press: (){}),
-                    Button(Label: '/', Colour: Colors.orange, Press: (){}),
+                    Button(Label: '/', Colour: Colors.orange, Press: (){
+                      userInput += '/';
+                      setState(() {
+                      });
+                    }),
                   ],
                 ),
                 Column(
@@ -90,7 +100,11 @@ class CalculatorScreenState extends State<CalculatorScreen> {
                           setState(() {
                           });
                         }),
-                        Button(Label: '-', Colour: Colors.orange, Press: (){}),
+                        Button(Label: '-', Colour: Colors.orange, Press: (){
+                          userInput += '-';
+                          setState(() {
+                          });
+                        }),
                       ],
                     ),
                   ],
@@ -114,7 +128,11 @@ class CalculatorScreenState extends State<CalculatorScreen> {
                           setState(() {
                           });
                         }),
-                        Button(Label: '+', Colour: Colors.orange, Press: (){}),
+                        Button(Label: '+', Colour: Colors.orange, Press: (){
+                          userInput += '+';
+                          setState(() {
+                          });
+                        }),
                       ],
                     ),
                   ],
@@ -123,13 +141,21 @@ class CalculatorScreenState extends State<CalculatorScreen> {
                   children: [
                     Row(
                       children: [
-                        Button(Label: '%', Press: (){}),
+                        Button(Label: '%', Press: (){
+                          userInput += '%';
+                          setState(() {
+                          });
+                        }),
                         Button(Label: '0', Press: (){
                           userInput += '0';
                           setState(() {
                           });
                         }),
-                        Button(Label: '.', Press: (){}),
+                        Button(Label: '.', Press: (){
+                          userInput += '.';
+                          setState(() {
+                          });
+                        }),
                         Button(Label: '=', Colour: Colors.orange, Press: (){
                           equalPres();
                           setState(() {
@@ -147,10 +173,12 @@ class CalculatorScreenState extends State<CalculatorScreen> {
     );
   }
   void equalPres (){
+    String finaluserInput = userInput;
+    finaluserInput = userInput.replaceAll('X', '*');
     Parser p = Parser();
-    Expression expression = p.parse(userInput);
+    Expression expression = p.parse(finaluserInput);
     ContextModel contextModel = ContextModel();
-    int evaluated = expression.evaluate(EvaluationType.REAL, contextModel);
+    double evaluated = expression.evaluate(EvaluationType.REAL, contextModel);
     output = evaluated.toString();
   }
 }
